@@ -99,7 +99,11 @@ export default function SpecInput({ onSpecLoaded }) {
       const raw = await response.text()
       handleSpec(raw, `url:${trimmed}`)
     } catch (e) {
-      setError(`Failed to fetch spec: ${e.message}`)
+      if (e instanceof TypeError) {
+        setError('Failed to fetch spec: The URL may not allow cross-origin requests (CORS), or the server may be unreachable.')
+      } else {
+        setError(`Failed to fetch spec: ${e.message}`)
+      }
     } finally {
       setLoading(false)
     }
