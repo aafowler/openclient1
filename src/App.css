@@ -1,0 +1,77 @@
+/* Minimal global reset and layout */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, sans-serif;
+  color: #222;
+  background: #fafafa;
+  line-height: 1.5;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.app main {
+  flex: 1;
+}
+
+/* Header */
+.app-header {
+  padding: 1rem 2rem;
+  background: #1a73e8;
+  color: #fff;
+}
+
+.app-header h1 {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+/* Footer */
+.app-footer {
+  padding: 1rem 2rem;
+  text-align: center;
+  color: #888;
+  font-size: 0.85rem;
+  border-top: 1px solid #e2e2e2;
+}
+
+/* Spec loaded confirmation (temporary — will be replaced by FR3+ views) */
+.spec-loaded {
+  max-width: 720px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.spec-loaded h2 {
+  margin-bottom: 0.5rem;
+}
+
+.spec-loaded p {
+  margin-bottom: 1rem;
+  color: #555;
+}
+
+.spec-loaded button {
+  padding: 0.5rem 1.25rem;
+  background: none;
+  border: 1px solid #1a73e8;
+  color: #1a73e8;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.spec-loaded button:hover {
+  background: #e8f0fe;
+}

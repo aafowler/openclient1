@@ -1,0 +1,99 @@
+.spec-input {
+  max-width: 720px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.spec-input h2 {
+  margin-bottom: 1rem;
+}
+
+/* Tab bar */
+.spec-input-tabs {
+  display: flex;
+  gap: 0;
+  border-bottom: 2px solid #e2e2e2;
+  margin-bottom: 1rem;
+}
+
+.spec-input-tab {
+  padding: 0.5rem 1.25rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 0.95rem;
+  color: #666;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.spec-input-tab:hover {
+  color: #222;
+}
+
+.spec-input-tab.active {
+  color: #1a73e8;
+  border-bottom-color: #1a73e8;
+  font-weight: 600;
+}
+
+/* Panels */
+.spec-input-panel {
+  min-height: 200px;
+}
+
+.spec-input-paste textarea {
+  width: 100%;
+  font-family: monospace;
+  font-size: 0.875rem;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+  box-sizing: border-box;
+}
+
+.spec-input-url input[type="url"] {
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  font-size: 0.95rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-bottom: 0.75rem;
+}
+
+.spec-input-file p {
+  margin-bottom: 0.75rem;
+  color: #555;
+}
+
+.spec-input-submit {
+  margin-top: 0.75rem;
+  padding: 0.5rem 1.5rem;
+  background: #1a73e8;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
+.spec-input-submit:hover {
+  background: #1557b0;
+}
+
+.spec-input-submit:disabled {
+  background: #999;
+  cursor: not-allowed;
+}
+
+.spec-input-error {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  background: #fdecea;
+  color: #c62828;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
