@@ -92,18 +92,23 @@ export default function SpecInput({ onSpecLoaded }) {
     setError(null)
     setLoading(true)
     try {
-      const response = await fetch(trimmed)
+      // Route through the dev server proxy to avoid browser CORS restrictions.
+      const proxyUrl = `/api/fetch-spec?url=${encodeURIComponent(trimmed)}`
+      const response = await fetch(proxyUrl)
+
       if (!response.ok) {
+        // The proxy returns JSON error bodies for its own failures (400, 502).
+        const contentType = response.headers.get('Content-Type') || ''
+        if (contentType.includes('application/json')) {
+          const body = await response.json()
+          throw new Error(body.error || `HTTP ${response.status}`)
+        }
         throw new Error(`HTTP ${response.status}: ${response.statusText}`)
       }
       const raw = await response.text()
       handleSpec(raw, `url:${trimmed}`)
     } catch (e) {
-      if (e instanceof TypeError) {
-        setError('Failed to fetch spec: The URL may not allow cross-origin requests (CORS), or the server may be unreachable.')
-      } else {
-        setError(`Failed to fetch spec: ${e.message}`)
-      }
+      setError(`Failed to fetch spec: ${e.message}`)
     } finally {
       setLoading(false)
     }

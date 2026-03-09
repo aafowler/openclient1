@@ -42,8 +42,8 @@ export async function validateSpec(spec) {
   }
 
   // Schema validation via @apidevtools/swagger-parser.
+  // Validates against the OpenAPI JSON Schema, resolves $ref pointers and detects invalid data types or structural errors.
   try {
-    // Deep-clone so swagger-parser's internal mutations don't affect the caller's object.
     const clone = structuredClone(spec)
     const validated = await SwaggerParser.validate(clone)
     return { valid: true, errors: [], spec: validated }
