@@ -32,6 +32,7 @@ export default function App() {
 
     if (result.valid) {
       const model = parseSpec(result.spec)
+      console.log('Parsed API model:', model) // TODO: remove debug log
       setApiModel(model)
     }
   }
