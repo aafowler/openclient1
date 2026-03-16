@@ -32,8 +32,8 @@ export async function validateSpec(spec) {
     }
   }
 
-  if (!spec.paths && !spec.webhooks) {
-    errors.push('Missing "paths" object. The spec should define at least one API path.')
+  if (!spec.paths && !spec.webhooks && !spec.components) {
+    errors.push('Missing required field: the spec must contain at least one of "paths", "webhooks", or "components".')
   }
 
   // If basic structural checks already found issues, return early so the user can fix these basic problems first.
