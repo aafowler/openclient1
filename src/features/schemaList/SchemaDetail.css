@@ -1,0 +1,142 @@
+.schema-detail {
+  padding: 0.75rem 1rem;
+  border-top: 1px dashed #ddd;
+  background: #fafafa;
+}
+
+/* ── Sections ── */
+.schema-detail-section {
+  margin-top: 0.75rem;
+}
+
+.schema-detail-section:first-child {
+  margin-top: 0;
+}
+
+.schema-detail-section h4 {
+  font-size: 0.85rem;
+  margin-bottom: 0.35rem;
+  color: #333;
+}
+
+/* ── Property table ── */
+.schema-detail-table-wrap {
+  overflow-x: auto;
+}
+
+.schema-detail-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8rem;
+}
+
+.schema-detail-table th {
+  text-align: left;
+  padding: 0.35rem 0.5rem;
+  border-bottom: 2px solid #ddd;
+  color: #555;
+  font-weight: 600;
+}
+
+.schema-detail-table td {
+  padding: 0.35rem 0.5rem;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.schema-detail-prop-name {
+  font-family: monospace;
+  font-weight: 600;
+  color: #222;
+}
+
+.schema-detail-type {
+  font-family: monospace;
+  font-size: 0.8rem;
+  color: #1a73e8;
+}
+
+.schema-detail-enum-flag {
+  color: #6a1b9a;
+  font-size: 0.75rem;
+}
+
+/* ── Enum values ── */
+.schema-detail-enum-values {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin-top: 0.25rem;
+}
+
+.schema-detail-enum-badge {
+  display: inline-block;
+  padding: 0.1rem 0.35rem;
+  border-radius: 3px;
+  font-size: 0.7rem;
+  background: #f0f0f0;
+  color: #444;
+}
+
+.schema-detail-enum-more {
+  font-size: 0.7rem;
+  color: #888;
+  align-self: center;
+}
+
+/* ── Array info ── */
+.schema-detail-array-info {
+  margin: 0;
+  font-size: 0.8rem;
+  color: #555;
+}
+
+/* ── UsedBy section ── */
+.schema-detail-used-by {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.schema-detail-used-by-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.schema-detail-method {
+  display: inline-block;
+  min-width: 3.5rem;
+  padding: 0.1rem 0.35rem;
+  border-radius: 3px;
+  font-family: monospace;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  color: #fff;
+  background: #888;
+}
+
+.schema-detail-method--get { background: #1a73e8; }
+.schema-detail-method--post { background: #2e7d32; }
+.schema-detail-method--put { background: #e65100; }
+.schema-detail-method--delete { background: #c62828; }
+.schema-detail-method--patch { background: #6a1b9a; }
+
+.schema-detail-path {
+  font-family: monospace;
+  font-size: 0.8rem;
+  color: #222;
+}
+
+.schema-detail-location {
+  display: inline-block;
+  padding: 0.05rem 0.35rem;
+  border-radius: 3px;
+  font-size: 0.65rem;
+  font-weight: 600;
+  background: #e8e8e8;
+  color: #555;
+}
