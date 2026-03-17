@@ -1,0 +1,77 @@
+.endpoint-list {
+  margin-top: 2rem;
+}
+
+.endpoint-list > h2 {
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+}
+
+/* ── Tag group ── */
+.endpoint-list-group {
+  margin-bottom: 1.5rem;
+}
+
+.endpoint-list-tag {
+  font-size: 1.1rem;
+  margin-bottom: 0.25rem;
+}
+
+.endpoint-list-tag-desc {
+  color: #666;
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+}
+
+/* ── Endpoint items ── */
+.endpoint-list-items {
+  list-style: none;
+}
+
+.endpoint-list-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+.endpoint-list-item:last-child {
+  border-bottom: none;
+}
+
+/* ── Method badge ── */
+.endpoint-list-method {
+  display: inline-block;
+  min-width: 4.5rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 3px;
+  font-family: monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  color: #fff;
+  background: #888;
+}
+
+.endpoint-list-method--get { background: #1a73e8; }
+.endpoint-list-method--post { background: #2e7d32; }
+.endpoint-list-method--put { background: #e65100; }
+.endpoint-list-method--delete { background: #c62828; }
+.endpoint-list-method--patch { background: #6a1b9a; }
+
+/* ── Path and summary ── */
+.endpoint-list-path {
+  font-family: monospace;
+  font-size: 0.9rem;
+  color: #222;
+}
+
+.endpoint-list-summary {
+  color: #666;
+  font-size: 0.85rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
