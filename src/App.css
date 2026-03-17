@@ -46,23 +46,28 @@ body {
   border-top: 1px solid #e2e2e2;
 }
 
-/* Spec loaded confirmation (temporary — will be replaced by FR3+ views) */
-.spec-loaded {
-  max-width: 720px;
+/* Main API view (FR4/FR5/FR6) */
+.api-view {
+  max-width: 900px;
   margin: 2rem auto;
   padding: 0 1rem;
 }
 
-.spec-loaded h2 {
+.api-view-header {
+  margin-bottom: 1.5rem;
+}
+
+.api-view-header h2 {
   margin-bottom: 0.5rem;
 }
 
-.spec-loaded p {
-  margin-bottom: 1rem;
+.api-view-header p {
+  margin-bottom: 0.5rem;
   color: #555;
 }
 
-.spec-loaded button {
+.api-view-header button {
+  margin-top: 0.5rem;
   padding: 0.5rem 1.25rem;
   background: none;
   border: 1px solid #1a73e8;
@@ -72,6 +77,6 @@ body {
   font-size: 0.9rem;
 }
 
-.spec-loaded button:hover {
+.api-view-header button:hover {
   background: #e8f0fe;
 }

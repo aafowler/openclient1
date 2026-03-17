@@ -5,6 +5,7 @@ import SpecInput from './features/specInput/SpecInput'
 import ValidationResults from './features/specValidation/ValidationResults'
 import { validateSpec } from './features/specValidation/validateSpec'
 import { parseSpec } from './features/specParsing/parseSpec'
+import EndpointList from './features/endpointList/EndpointList'
 import './App.css'
 
 export default function App() {
@@ -32,7 +33,6 @@ export default function App() {
 
     if (result.valid) {
       const model = parseSpec(result.spec)
-      console.log('Parsed API model:', model) // TODO: remove debug log
       setApiModel(model)
     }
   }
@@ -55,23 +55,27 @@ export default function App() {
           />
         )}
 
-        {/* Step 3: Spec loaded, validated, and parsed (FR3+) */}
+        {/* Step 3: Main app view (FR4/FR5/FR6) */}
         {specData && specAccepted && apiModel && (
-          <div className="spec-loaded">
-            <h2>{apiModel.metadata.title || 'Specification Loaded'}</h2>
-            <p>
-              Version: <strong>{apiModel.metadata.version}</strong>
-              {' | '}
-              Format: <strong>{specData.format.toUpperCase()}</strong>
-              {' | '}
-              Source: <strong>{specData.source}</strong>
-            </p>
-            <p>
-              {apiModel.endpoints.length} endpoint{apiModel.endpoints.length !== 1 && 's'}
-              {' | '}
-              {apiModel.schemas.length} schema{apiModel.schemas.length !== 1 && 's'}
-            </p>
-            <button onClick={resetAll}>Load a different spec</button>
+          <div className="api-view">
+            {/* FR4 placeholder: metadata header */}
+            <header className="api-view-header">
+              <h2>{apiModel.metadata.title || 'API Specification'}</h2>
+              <p>
+                Version: <strong>{apiModel.metadata.version}</strong>
+                {' | '}
+                Format: <strong>{specData.format.toUpperCase()}</strong>
+                {' | '}
+                Source: <strong>{specData.source}</strong>
+              </p>
+              <button onClick={resetAll}>Load a different spec</button>
+            </header>
+
+            {/* FR5: Endpoint aggregation */}
+            <EndpointList
+              endpoints={apiModel.endpoints}
+              tags={apiModel.tags}
+            />
           </div>
         )}
       </main>
