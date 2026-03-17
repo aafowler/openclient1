@@ -6,6 +6,7 @@ import ValidationResults from './features/specValidation/ValidationResults'
 import { validateSpec } from './features/specValidation/validateSpec'
 import { parseSpec } from './features/specParsing/parseSpec'
 import SchemaList from './features/schemaList/SchemaList'
+import EndpointList from './features/endpointList/EndpointList'
 import './App.css'
 
 export default function App() {
@@ -73,6 +74,12 @@ export default function App() {
 
             {/* FR6: Schema aggregation */}
             <SchemaList schemas={apiModel.schemas} />
+              
+            {/* FR5: Endpoint aggregation */}
+            <EndpointList
+              endpoints={apiModel.endpoints}
+              tags={apiModel.tags}
+            />
           </div>
         )}
       </main>
