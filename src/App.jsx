@@ -55,23 +55,67 @@ export default function App() {
           />
         )}
 
-        {/* Step 3: Spec loaded, validated, and parsed (FR3+) */}
+        {/* Step 3: FR4 - API Metadata Aggregation (FR3+) */}
         {specData && specAccepted && apiModel && (
-          <div className="spec-loaded">
-            <h2>{apiModel.metadata.title || 'Specification Loaded'}</h2>
-            <p>
-              Version: <strong>{apiModel.metadata.version}</strong>
-              {' | '}
-              Format: <strong>{specData.format.toUpperCase()}</strong>
-              {' | '}
-              Source: <strong>{specData.source}</strong>
-            </p>
-            <p>
-              {apiModel.endpoints.length} endpoint{apiModel.endpoints.length !== 1 && 's'}
-              {' | '}
-              {apiModel.schemas.length} schema{apiModel.schemas.length !== 1 && 's'}
-            </p>
-            <button onClick={resetAll}>Load a different spec</button>
+          <div className="spec-view">
+            <section className="metadata-card">
+              <header className="metadata-header">
+                <div className="title-row">
+                  <h1>{apiModel.metadata.title || 'Untitled Specification'}</h1>
+                  <span className="badge version">v{apiModel.metadata.version}</span>
+                  <span className="badge spec-type">{apiModel.metadata.openApiVersion}</span>
+                </div>
+                {apiModel.metadata.license && (
+                  <small className="license-info">
+                    License: <strong>{apiModel.metadata.license.name}</strong>
+                  </small>
+                )}
+              </header>
+
+              <p className="metadata-description">
+                {apiModel.metadata.description || 'No description provided for this API.'}
+              </p>
+
+              {/* Server Information Section */}
+              {apiModel.servers && apiModel.servers.length > 0 && (
+                <div className="metadata-section">
+                  <h3>Base Servers</h3>
+                  <ul className="server-list">
+                    {apiModel.servers.map((s, i) => (
+                      <li key={i}>
+                        <code>{s.url}</code>
+                        {s.description && <span className="server-desc"> — {s.description}</span>}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              {/* Tags / Categories Section */}
+              {apiModel.tags && apiModel.tags.length > 0 && (
+                <div className="metadata-section">
+                  <h3>Tags</h3>
+                  <div className="tag-cloud">
+                    {apiModel.tags.map((tag, i) => (
+                      <span key={i} className="tag-pill" title={tag.description}>
+                        {tag.name}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              <footer className="metadata-footer">
+                <div className="stats-row">
+                  <span><strong>{apiModel.endpoints.length}</strong> Endpoints</span>
+                  <span><strong>{apiModel.schemas.length}</strong> Schemas</span>
+                  <span>Source: <strong>{specData.source}</strong></span>
+                </div>
+                <button className="secondary-btn" onClick={resetAll}>
+                  Load Different Spec
+                </button>
+              </footer>
+            </section>
           </div>
         )}
       </main>
