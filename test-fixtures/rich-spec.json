@@ -1,0 +1,327 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Rich Example API",
+    "version": "2.1.0",
+    "description": "A feature-rich API for testing the endpoint list view."
+  },
+  "tags": [
+    { "name": "Users", "description": "User management operations" },
+    { "name": "Posts", "description": "Blog post operations" },
+    { "name": "Admin", "description": "Administrative endpoints" }
+  ],
+  "paths": {
+    "/users": {
+      "get": {
+        "tags": ["Users"],
+        "summary": "List all users",
+        "description": "Returns a paginated list of all users in the system. Supports filtering by status and sorting by common fields.",
+        "operationId": "listUsers",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page number for pagination",
+            "required": false,
+            "schema": { "type": "integer", "default": 1 }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Number of results per page",
+            "required": false,
+            "schema": { "type": "integer", "default": 20 }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "description": "Filter by user status",
+            "required": false,
+            "schema": { "type": "string", "enum": ["active", "inactive", "suspended"] }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A paginated list of users",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/User" }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid query parameters",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Users"],
+        "summary": "Create a new user",
+        "description": "Creates a new user account with the provided details.",
+        "operationId": "createUser",
+        "requestBody": {
+          "required": true,
+          "description": "User object to create",
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/User" }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "User created successfully",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/User" }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request body",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/{userId}": {
+      "parameters": [
+        {
+          "name": "userId",
+          "in": "path",
+          "required": true,
+          "description": "Unique user identifier",
+          "schema": { "type": "string" }
+        }
+      ],
+      "get": {
+        "tags": ["Users"],
+        "summary": "Get user by ID",
+        "operationId": "getUserById",
+        "responses": {
+          "200": {
+            "description": "The requested user",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/User" }
+              }
+            }
+          },
+          "404": {
+            "description": "User not found",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Users", "Admin"],
+        "summary": "Delete a user",
+        "description": "Permanently deletes a user account. This action cannot be undone.",
+        "operationId": "deleteUser",
+        "deprecated": true,
+        "responses": {
+          "204": {
+            "description": "User deleted successfully"
+          },
+          "404": {
+            "description": "User not found",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/posts": {
+      "get": {
+        "tags": ["Posts"],
+        "summary": "List all posts",
+        "description": "Returns all blog posts with optional tag filtering.",
+        "operationId": "listPosts",
+        "parameters": [
+          {
+            "name": "tag",
+            "in": "query",
+            "description": "Filter posts by tag",
+            "required": false,
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "author",
+            "in": "query",
+            "description": "Filter posts by author ID",
+            "required": false,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A list of posts",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/Post" }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Posts"],
+        "summary": "Create a new post",
+        "operationId": "createPost",
+        "requestBody": {
+          "required": true,
+          "description": "Post content to publish",
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/Post" }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Post created successfully",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Post" }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid post data",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/stats": {
+      "get": {
+        "tags": ["Admin"],
+        "summary": "Get system statistics",
+        "description": "Returns system-wide statistics including user counts, post counts, and storage usage.",
+        "operationId": "getStats",
+        "parameters": [
+          {
+            "name": "X-Admin-Token",
+            "in": "header",
+            "required": true,
+            "description": "Admin authentication token",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "System statistics",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "totalUsers": { "type": "integer" },
+                    "totalPosts": { "type": "integer" },
+                    "storageUsedMb": { "type": "number" }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Insufficient permissions",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/health": {
+      "get": {
+        "summary": "Health check",
+        "description": "Returns the health status of the API. No authentication required.",
+        "operationId": "healthCheck",
+        "responses": {
+          "200": {
+            "description": "Service is healthy",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": { "type": "string" },
+                    "uptime": { "type": "number" }
+                  }
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service is unavailable"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "User": {
+        "type": "object",
+        "required": ["id", "name", "email"],
+        "properties": {
+          "id": { "type": "string", "description": "Unique identifier" },
+          "name": { "type": "string", "description": "Display name" },
+          "email": { "type": "string", "format": "email", "description": "Email address" },
+          "status": { "type": "string", "enum": ["active", "inactive", "suspended"] },
+          "createdAt": { "type": "string", "format": "date-time" }
+        }
+      },
+      "Post": {
+        "type": "object",
+        "required": ["id", "title", "content"],
+        "properties": {
+          "id": { "type": "string" },
+          "title": { "type": "string" },
+          "content": { "type": "string" },
+          "authorId": { "type": "string" },
+          "tags": { "type": "array", "items": { "type": "string" } },
+          "publishedAt": { "type": "string", "format": "date-time" }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "required": ["code", "message"],
+        "properties": {
+          "code": { "type": "integer" },
+          "message": { "type": "string" },
+          "details": { "type": "string" }
+        }
+      }
+    }
+  }
+}
