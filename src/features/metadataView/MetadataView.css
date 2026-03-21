@@ -1,0 +1,134 @@
+/* FR4: API Metadata Aggregation View */
+.spec-view {
+  max-width: 1200px;   /* or 1400px */
+  width: 100%;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+}
+
+.metadata-card {
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 12px;
+  padding: 2.5rem;
+  text-align: left;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.metadata-header {
+  margin-bottom: 1.5rem;
+}
+
+.title-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.title-row h1 {
+  font-size: 1.75rem;
+  color: #111;
+}
+
+/* Badges for Version and Spec Type */
+.badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.version { 
+  background: #eff6ff; 
+  color: #1d4ed8; 
+  border: 1px solid #dbeafe; 
+}
+
+.spec-type { 
+  background: #f3f4f6; 
+  color: #374151; 
+}
+
+.license-info {
+  color: #6b7280;
+  font-size: 0.85rem;
+}
+
+.metadata-description {
+  color: #4b5563;
+  line-height: 1.6;
+  white-space: pre-wrap; /* Preserves line breaks from the spec */
+  margin: 1.5rem 0;
+}
+
+/* Sections for Servers and Tags */
+.metadata-section {
+  margin-top: 2rem;
+}
+
+.metadata-section h3 {
+  font-size: 1rem;
+  color: #111827;
+  border-bottom: 1px solid #f3f4f6;
+  padding-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.server-list { 
+  list-style: none; 
+  padding: 0; 
+}
+
+.server-list li { 
+  margin-bottom: 0.5rem; 
+  font-size: 0.95rem; 
+}
+
+.server-list code { 
+  background: #fdf2f8; 
+  color: #9d174d; 
+  padding: 0.2rem 0.4rem; 
+  border-radius: 4px;
+  font-family: monospace;
+}
+
+.server-desc {
+  color: #666;
+  margin-left: 0.5rem;
+}
+
+.tag-cloud { 
+  display: flex; 
+  gap: 0.5rem; 
+  flex-wrap: wrap; 
+}
+
+.tag-pill { 
+  background: #f0fdf4; 
+  color: #166534; 
+  border: 1px solid #dcfce7; 
+  padding: 0.25rem 0.75rem; 
+  border-radius: 999px; 
+  font-size: 0.8rem; 
+}
+
+/* Footer of the Metadata Card */
+.metadata-footer {
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e5e7eb;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.stats-row { 
+  display: flex; 
+  gap: 1.5rem; 
+  font-size: 0.85rem; 
+  color: #6b7280; 
+}
