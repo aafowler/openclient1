@@ -46,11 +46,11 @@ body {
   border-top: 1px solid #e2e2e2;
 }
 
-.spec-results-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-bottom: 3rem;
+/* Main API view (FR4/FR5/FR6) */
+.api-view {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0 1rem;
 }
 
 .action-bar {

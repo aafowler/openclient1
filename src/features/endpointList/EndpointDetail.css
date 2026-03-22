@@ -1,0 +1,177 @@
+.endpoint-detail {
+  padding: 0.75rem 1rem 0.75rem 5.25rem;
+  border-top: 1px dashed #ddd;
+  background: #fafafa;
+}
+
+/* ── Header area ── */
+.endpoint-detail-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.endpoint-detail-deprecated {
+  display: inline-block;
+  padding: 0.1rem 0.5rem;
+  border-radius: 3px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #fff;
+  background: #e65100;
+  text-transform: uppercase;
+}
+
+.endpoint-detail-operation-id {
+  font-family: monospace;
+  font-size: 0.8rem;
+  color: #555;
+}
+
+.endpoint-detail-description {
+  width: 100%;
+  margin: 0;
+  color: #444;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+/* ── Sections ── */
+.endpoint-detail-section {
+  margin-top: 0.75rem;
+}
+
+.endpoint-detail-section h4 {
+  font-size: 0.85rem;
+  margin-bottom: 0.35rem;
+  color: #333;
+}
+
+/* ── Parameters table ── */
+.endpoint-detail-table-wrap {
+  overflow-x: auto;
+}
+
+.endpoint-detail-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8rem;
+}
+
+.endpoint-detail-table th {
+  text-align: left;
+  padding: 0.35rem 0.5rem;
+  border-bottom: 2px solid #ddd;
+  color: #555;
+  font-weight: 600;
+}
+
+.endpoint-detail-table td {
+  padding: 0.35rem 0.5rem;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.endpoint-detail-param-name {
+  font-family: monospace;
+  font-weight: 600;
+  color: #222;
+}
+
+.endpoint-detail-location {
+  display: inline-block;
+  padding: 0.05rem 0.35rem;
+  border-radius: 3px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  background: #e8e8e8;
+  color: #555;
+}
+
+.endpoint-detail-type {
+  font-family: monospace;
+  font-size: 0.8rem;
+  color: #1a73e8;
+}
+
+/* ── Request body ── */
+.endpoint-detail-required {
+  display: inline-block;
+  margin-left: 0.35rem;
+  padding: 0.05rem 0.35rem;
+  border-radius: 3px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  background: #fdecea;
+  color: #c62828;
+}
+
+.endpoint-detail-body-desc {
+  margin: 0 0 0.35rem;
+  font-size: 0.8rem;
+  color: #555;
+}
+
+.endpoint-detail-media {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem 0;
+}
+
+.endpoint-detail-media-type {
+  font-size: 0.75rem;
+  background: #f0f0f0;
+  padding: 0.1rem 0.35rem;
+  border-radius: 3px;
+}
+
+/* ── Responses ── */
+.endpoint-detail-responses {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.endpoint-detail-response {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  padding: 0.25rem 0;
+}
+
+.endpoint-detail-status {
+  display: inline-block;
+  min-width: 2.5rem;
+  padding: 0.1rem 0.35rem;
+  border-radius: 3px;
+  font-family: monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-align: center;
+  color: #fff;
+}
+
+.endpoint-detail-status--2xx { background: #2e7d32; }
+.endpoint-detail-status--3xx { background: #1a73e8; }
+.endpoint-detail-status--4xx { background: #e65100; }
+.endpoint-detail-status--5xx { background: #c62828; }
+
+.endpoint-detail-response-desc {
+  font-size: 0.8rem;
+  color: #444;
+}
+
+.endpoint-detail-response-media {
+  font-size: 0.75rem;
+  color: #666;
+}
+
+.endpoint-detail-response-media code {
+  background: #f0f0f0;
+  padding: 0.1rem 0.35rem;
+  border-radius: 3px;
+}

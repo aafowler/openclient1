@@ -6,6 +6,8 @@ import ValidationResults from './features/specValidation/ValidationResults'
 import MetadataView from './features/metadataView/MetadataView'
 import { validateSpec } from './features/specValidation/validateSpec'
 import { parseSpec } from './features/specParsing/parseSpec'
+import SchemaList from './features/schemaList/SchemaList'
+import EndpointList from './features/endpointList/EndpointList'
 import './App.css'
 
 export default function App() {
@@ -33,7 +35,6 @@ export default function App() {
 
     if (result.valid) {
       const model = parseSpec(result.spec)
-      console.log('Parsed API model:', model) // TODO: remove debug log
       setApiModel(model)
     }
   }
@@ -56,14 +57,24 @@ export default function App() {
           />
         )}
 
-       {/* Step 3: FR4 - API Metadata Aggregation (FR3+) */}
+        {/* Step 3: Main app view (FR4/FR5/FR6) */}
         {specData && specAccepted && apiModel && (
-          <div className="spec-results-container">
-            <MetadataView 
-              apiModel={apiModel} 
-              source={specData.source} 
+          <div className="api-view">
+            {/* FR4: API Metadata */}
+            <MetadataView
+              apiModel={apiModel}
+              source={specData.source}
             />
-            
+
+            {/* FR6: Schema aggregation */}
+            <SchemaList schemas={apiModel.schemas} />
+
+            {/* FR5: Endpoint aggregation */}
+            <EndpointList
+              endpoints={apiModel.endpoints}
+              tags={apiModel.tags}
+            />
+
             <div className="action-bar">
               <button className="secondary-btn" onClick={resetAll}>
                 Load Different Spec
