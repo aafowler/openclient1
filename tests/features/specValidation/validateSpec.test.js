@@ -42,9 +42,10 @@ describe('validateSpec', () => {
     })
 
     it('rejects an array', async () => {
-      // Arrays pass typeof === 'object' but are not valid specs
+      // Arrays pass typeof === 'object' but are caught by structural checks
       const result = await validateSpec([{ openapi: '3.0.0' }])
       expect(result.valid).toBe(false)
+      expect(result.errors.length).toBeGreaterThan(0)
     })
   })
 
