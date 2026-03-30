@@ -1,0 +1,43 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Multiple Errors Example",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/users": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "invalid_location",
+            "schema": { "type": "string" }
+          }
+        ]
+      }
+    },
+    "/items": {
+      "post": {
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "not_a_real_type"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
