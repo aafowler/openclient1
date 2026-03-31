@@ -12,18 +12,46 @@ export default function MetadataView({ apiModel, source }) {
             <span className="badge version">v{metadata.version}</span>
             <span className="badge spec-type">{metadata.openApiVersion}</span>
           </div>
-          {metadata.license && (
-            <small className="license-info">
-              License: <strong>{metadata.license.name}</strong>
-            </small>
-          )}
         </header>
 
+        {/* Description */}
         <p className="metadata-description">
           {metadata.description || 'No description provided for this API.'}
         </p>
 
-        {/* Server Information */}
+        {/* Contact */}
+        {metadata.contact && (metadata.contact.name || metadata.contact.email || metadata.contact.url) && (
+          <div className="metadata-section">
+            <h3>Contact</h3>
+            <div className="contact-info">
+              {metadata.contact.name && <span className="contact-name">{metadata.contact.name}</span>}
+              {metadata.contact.email && (
+                <a href={`mailto:${metadata.contact.email}`} className="contact-link">{metadata.contact.email}</a>
+              )}
+              {metadata.contact.url && (
+                <a href={metadata.contact.url} target="_blank" rel="noreferrer" className="contact-link">{metadata.contact.url}</a>
+              )}
+            </div>
+          </div>
+        )}
+
+        {/* License */}
+        {metadata.license && (
+          <div className="metadata-section">
+            <h3>License</h3>
+            <p className="license-info">
+              {metadata.license.url ? (
+                <a href={metadata.license.url} target="_blank" rel="noreferrer" className="contact-link">
+                  {metadata.license.name}
+                </a>
+              ) : (
+                metadata.license.name
+              )}
+            </p>
+          </div>
+        )}
+
+        {/* Servers */}
         {servers && servers.length > 0 && (
           <div className="metadata-section">
             <h3>Base Servers</h3>
@@ -35,20 +63,6 @@ export default function MetadataView({ apiModel, source }) {
                 </li>
               ))}
             </ul>
-          </div>
-        )}
-
-        {/* Tags / Categories */}
-        {tags && tags.length > 0 && (
-          <div className="metadata-section">
-            <h3>Tags</h3>
-            <div className="tag-cloud">
-              {tags.map((tag, i) => (
-                <span key={i} className="tag-pill" title={tag.description}>
-                  {tag.name}
-                </span>
-              ))}
-            </div>
           </div>
         )}
 

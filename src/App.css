@@ -66,13 +66,77 @@ body {
   letter-spacing: -0.05em;
   line-height: 1;
   color: #fff;
-  text-align: center;
-
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
   transition: opacity 0.15s ease;
 }
 .app-header h1:hover {
   opacity: 0.9;
+}
+
+/* Hamburger menu */
+.app-header {
+  position: relative;
+}
+
+.header-menu {
+  position: absolute;
+  top: 1.75rem;
+  left: 1.5rem;
+}
+
+.hamburger {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 4px;
+  border-radius: 6px;
+  transition: background 0.15s ease;
+}
+
+.hamburger:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: #fff;
+  border-radius: 2px;
+}
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  background: #fff;
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  box-shadow: var(--shadow-card);
+  min-width: 140px;
+  overflow: hidden;
+}
+
+.dropdown button {
+  display: block;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  color: var(--text-main);
+  font-size: 0.95rem;
+}
+
+.dropdown button:hover {
+  background: var(--bg-page);
 }
 
 /* Footer */
@@ -180,6 +244,10 @@ h4 {
 
   .app-header h1 {
     font-size: 2.6rem;
+  }
+
+  .app-header h1 img {
+    height: 2.2rem;
   }
 
   .app main {

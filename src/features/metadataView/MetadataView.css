@@ -110,6 +110,28 @@
   margin-left: 0.5rem;
 }
 
+.contact-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+  font-size: 0.95rem;
+  color: #374151;
+}
+
+.contact-name {
+  font-weight: 600;
+}
+
+.contact-link {
+  color: #1d4ed8;
+  text-decoration: none;
+}
+
+.contact-link:hover {
+  text-decoration: underline;
+}
+
 .tag-cloud {
   display: flex;
   gap: 0.5rem;
